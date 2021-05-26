@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<main>
+
+<div class="fourthBlock">
+  <p class="thirdBlock__title">Наши работы</p>
+  <div style="display: flex; padding: 0 80px; flex-flow: row wrap;justify-content: center;">
+    {% for work in works %}
+    <div class="fourthBlock__examples">
+      <div class="fourthBlock__examples_exampleOne" style="background-image: url({{ work.first_image.image.url }});" onclick="window.location.href = '/work/{{ work.id }}';">
+        <p>{{ work.title }}</p>
+      </div>
+      {% comment %} <div class="fourthBlock__examples_exampleTwo">
+        <p>Рама для пит-байка</p>
+      </div>
+      <div class="fourthBlock__examples_exampleThree">
+        <p>Расширительный бачок</p>
+      </div> {% endcomment %}
+    </div>
+    {% endfor %}
+  </div>
+  {% comment %} <div class="fourthBlock__examples">
+    <div class="fourthBlock__examples_exampleOne">
+      <p>Рама для Suzuki</p>
+    </div>
+    <div class="fourthBlock__examples_exampleTwo">
+      <p>Рама для пит-байка</p>
+    </div>
+    <div class="fourthBlock__examples_exampleThree">
+      <p>Расширительный бачок</p>
+    </div>
+  </div>
+  <div class="fourthBlock__examples">
+    <div class="fourthBlock__examples_exampleOne">
+      <p>Рама для Suzuki</p>
+    </div>
+    <div class="fourthBlock__examples_exampleTwo">
+      <p>Рама для пит-байка</p>
+    </div>
+    <div class="fourthBlock__examples_exampleThree">
+      <p>Расширительный бачок</p>
+    </div>
+  </div>
+  <div class="fourthBlock__examples">
+    <div class="fourthBlock__examples_exampleOne">
+      <p>Рама для Suzuki</p>
+    </div>
+    <div class="fourthBlock__examples_exampleTwo">
+      <p>Рама для пит-байка</p>
+    </div>
+    <div class="fourthBlock__examples_exampleThree">
+      <p>Расширительный бачок</p>
+    </div>
+  </div> {% endcomment %}
+</div>
+</main>
+
+{% endblock %}

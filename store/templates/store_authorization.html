@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Gad13 - кастом мастерская</title>
+  <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="./index.html">Gad13</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="./index.html">Главная</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./aboutUs.html">О нас</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./portfolio.html">Наши работы</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Магазин</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="./contact.html">Контакты</a>
+        </li> -->
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <!-- <div class="dropdown">
+          <a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="./img/human_icon.svg" width="25" alt="">
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="./client_editProfile.html">Профиль</a>
+            <a class="dropdown-item" href="#">История</a>
+            <a class="dropdown-item exit" href="index.html">Выйти</a>
+          </div>
+        </div> -->
+        <a href="">+7 (###) ###-##-##</a>
+        <img src="./img/instagram.svg" class="instargam" alt="">
+        <img src="./img/cart_96642.png" class="cart" alt="" onclick="window.location.href = './cart.html';">
+        <div class="dropdown dropdown_profile">
+          <a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="./img/profile_config_icon_149889.svg" alt="" style="float: left; margin-right: 0; width: 33px">
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="./client_editProfile.html">Профиль</a>
+            <a class="dropdown-item exit" href="./store.html">Выйти</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </nav>
+</header>
+
+
+<main>
+  <div class="categories">
+    <p class="categories_one" onclick="CategoriesActive(this)">Категория 1</p>
+    <p>/</p>
+    <p class="categories_one" onclick="CategoriesActive(this)">Категория 2</p>
+    <p>/</p>
+    <p class="categories_one" onclick="CategoriesActive(this)">Категория 3</p>
+    <p>/</p>
+    <p class="categories_one" onclick="CategoriesActive(this)">Категория 4</p>
+    <p>/</p>
+    <p class="categories_one" onclick="CategoriesActive(this)">Категория 5</p>
+    <p>/</p>
+    <p class="categories_one" onclick="CategoriesActive(this)">Категория 6</p>
+
+    <div class="sort">
+      <p>Сортировать по:</p>
+      <p class="categories_one" onclick="CategoriesActive(this)">Цене</p>
+    </div>
+  </div>
+
+  <div class="goods">
+    <div class="row">
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <button type="button" class="btn button_still"   data-toggle="modal" data-target="#exampleModalLong">
+              Подробнее
+            </button>
+            <div style="display: flex; justify-content: center;">
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Купить
+              </button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>+7 (###) ###-##-##</p>
+  <div>
+    <img src="./img/instagram.svg" class="instargam" alt="">
+  </div>
+</footer>
+
+<!-- Modal login-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Вход в личный кабинет</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row enterPopup">
+          <div class="col-12 enterPopup_input">
+            <input type="text" name="" value="" placeholder="Номер телефона">
+          </div>
+          <div class="col-12 enterPopup_input">
+            <input type="password" name="" value="" placeholder="Пароль">
+          </div>
+          <div class="popup_hint">
+            <p class="password" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal2">Забыли пароль?</p>
+            <p>/</p>
+            <p class="registration" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal3">Зарегистрироваться</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn enterButton">Войти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal password-->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Восстановление пароля</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row enterPopup">
+          <div class="col-12 enterPopup_input">
+            <input type="text" name="" value="" placeholder="Номер телефона">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn enterButton">Восстановить пароль</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal registration-->
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Регистрация</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row enterPopup">
+          <div class="col-12 enterPopup_input">
+            <input type="text" name="" value="" placeholder="Номер телефона">
+          </div>
+          <div class="col-12 enterPopup_input">
+            <input type="text" name="" value="" placeholder="Имя">
+          </div>
+          <div class="col-12 enterPopup_input">
+            <input type="password" name="" value="" placeholder="Пароль">
+          </div>
+          <div class="col-12 enterPopup_input">
+            <input type="password" name="" value="" placeholder="Пароль ещё раз">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn enterButton">Зарегистрироваться</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal good-->
+<div class="modal fade" id="exampleModalGood" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Товар дабавлен в корзину</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="./img/1.PNG" alt="" width="50%" style="margin-left: auto; margin-right: auto;">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Вернуться к выбору</button>
+        <button type="button" class="btn" style="background: orange; color: white;">Оформить заказ</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="./js/store.js"></script>
+<script>
+$('#myModal').on('shown.bs.modal', function () {
+$('#myInput').trigger('focus')
+})
+</script>
+</body>
+</html>

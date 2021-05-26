@@ -1,0 +1,185 @@
+{% extends 'base_store.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<main>
+  <div class="cartBlock">
+    {% csrf_token %}
+    <div>
+    {% for item in cart %}
+      <div class="cartBlock__firstBlock">
+        <div style="display: flex;">
+          <img src="{{ item.product.first_image.image.url }}" alt="" width="150" style="border-radius: 5px;">
+          <div style="margin-left: 10px; width: 50%">
+            <h5>{{ item.product.title }}</h5>
+            <p style="max-height: 50px; overflow: hidden; text-overflow: ellipsis;line-height:1">{{ item.product.description }}</p>
+          </div>
+          <p style="margin-top: 35px; margin-left:15px">{{ item.product.price }}₽ x <input class="cart_count" type="text" style="width: 20px; border: 0; text-align: center; background: white;" disabled value="{{ item.quantity }}"></p>
+          <div style="display: flex; margin-left: auto; margin-right: auto;">
+            <img class="znak" src="{% static 'img/minus.svg' %}" alt="" width="15" style="margin-right: 10px;" data-value="0" onclick="delete_product({{ item.product.id }})">
+            <img class="znak" src="{% static 'img/plus.svg' %}" alt="" width="15" data-value="0" onclick="buy_product({{ item.product.id }})">
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+      </div>
+    <div class="cartBlock__secondBlock">
+      <p>Итого: <input class="cart_count" type="text" style="width: 110px; border: 0; text-align: center; background: white;" disabled value="{{ cart_price }}">₽</p>
+      <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModal2">
+        Оформить заказ
+      </button>
+    </div>
+  </div>
+</main>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Вход в личный кабинет</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form action="/store/" method="post">
+        {% csrf_token %}
+        <div class="modal-body">
+          <div class="row enterPopup">
+            <div class="col-12 enterPopup_input">
+              <input type="text" name="login" value="" placeholder="Логин">
+            </div>
+            <div class="col-12 enterPopup_input">
+              <input type="password" name="password" value="" placeholder="Пароль" id="password">
+            </div>
+            <div class="popup_hint">
+              <p class="password" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal2">Забыли пароль?</p>
+              <p>/</p>
+              <p class="registration" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal3">Зарегистрироваться</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" name="auth" value="auth" class="btn enterButton">Войти</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+<!-- Modal login-->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Оформление заказа</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row enterPopup">
+          <div class="col-12 enterPopup_input">
+            <input type="text" name="" value="Иван" placeholder="Имя">
+          </div>
+          <div class="col-12 enterPopup_input">
+            <input type="text" name="" value="Иванов" placeholder="Фамилия">
+          </div>
+          <div class="col-12 enterPopup_input">
+            <input type="text" name="" value="+7(911)987-98-98" placeholder="Номер телефона">
+          </div>
+          <div class="col-12">
+            <p style="font-size: 20px; font-weight: 500">Способ доставки:</p>
+            <p style="font-size: 18px"><input name="deliver" type="radio" onclick="document.getElementsByClassName('delivery_input')[0].style.display = 'none'"> Самовывоз</p>
+            <p style="font-size: 18px"><input name="deliver" type="radio" onclick="document.getElementsByClassName('delivery_input')[0].style.display = 'block'"> Доставка</p>
+          </div>
+          <div class="delivery_input" style="width: 100%; margin-top: 15px; display: none">
+            <div class="col-12 enterPopup_input">
+              <input type="text" name="" value="" placeholder="Город">
+            </div>
+            <div class="col-12 enterPopup_input">
+              <input type="text" name="" value="" placeholder="Улица">
+            </div>
+            <div class="col-12 enterPopup_input">
+              <input type="text" name="" value="" placeholder="Дом">
+            </div>
+            <div class="col-12 enterPopup_input">
+              <input type="text" name="" value="" placeholder="Корпус">
+            </div>
+            <div class="col-12 enterPopup_input">
+              <input type="text" name="" value="" placeholder="Квартира">
+            </div>
+          </div>
+          <div class="col-12">
+            <p style="font-size: 20px; font-weight: 500">Способ оплаты:</p>
+            <p style="font-size: 18px"><input name="cash" type="radio" value="nedzen" onclick="document.getElementsByClassName('delivery_input')[1].style.display = 'none'"> Онлайн</p>
+            <p style="font-size: 18px"><input name="cash" type="radio" value="dzen" onclick="document.getElementsByClassName('delivery_input')[1].style.display = 'block'"> При получении</p>
+            <div class="delivery_input" style="width: 100%; margin-top: 15px; display: none">
+              <p style="font-size: 18px"><input name="way" type="radio" value="nedzen" onclick="document.getElementsByClassName('delivery_input')[2].style.display = 'none'"> Картой</p>
+              <p style="font-size: 18px"><input name="way" type="radio" value="dzen" onclick="document.getElementsByClassName('delivery_input')[2].style.display = 'block'"> Наличкой</p>
+              <div class="delivery_input" style="width: 100%; margin-top: 15px; display: none">
+                <p style="font-size: 18px">Сдача с:<input name="way" type="text" value=""></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form action="/store/cart/" method="post">
+        {% csrf_token %}
+        <div class="modal-footer">
+            <button type="submit" name="order" value="1" class="btn" style="background: orange; color: white;" id="delivar_button">Заказать</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal registration-->
+
+
+<script src="{% static 'js/cart.js' %}"></script>
+
+<script type="text/javascript">
+function buy_product(id){
+  console.log(id)
+  let csrftoken = $("[name=csrfmiddlewaretoken]").val();
+  console.log(csrftoken)
+  $.ajax({
+    type: 'POST',
+    url: '/store/',
+    headers: {"X-CSRFToken": csrftoken},
+    data: {'buy_id': id},
+    success: function(response) {
+        console.log('success')
+        location.reload()
+    },
+  });
+
+}
+
+function delete_product(id){
+  console.log(id)
+  let csrftoken = $("[name=csrfmiddlewaretoken]").val();
+  console.log(csrftoken)
+  $.ajax({
+    type: 'POST',
+    url: '/store/',
+    headers: {"X-CSRFToken": csrftoken},
+    data: {'delete_id': id},
+    success: function(response) {
+        console.log('success')
+        location.reload()
+    },
+  });
+
+}
+
+document.getElementById('delivar_button').onclick = function(){
+  alert('Заказ оформлен. Когда заказ будет готов к выдаче, мы пришлём вам сообщение')
+}
+</script>
+{% endblock %}

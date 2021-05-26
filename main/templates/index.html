@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<main>
+<div class="firstBlock">
+  <div class="firstBlock__text">
+    <p class="firstBlock__text_one">Мастерская Gad13 в Санкт-Перербурге</p>
+    <p class="firstBlock__text_phone">+7 (###) ###-##-##</p>
+    <p class="firstBlock__text_three">Мы знаем толк в мотоциклах</p>
+  </div>
+  <button type="button" name="button" class="firstBlock__button" onclick="window.location.href = '#services';">Наши услуги</button>
+</div>
+
+<div class="secondBlock">
+  <p class="secondBlock__title">О нас</p>
+  <div class="secondBlock__content">
+    <p>
+      Gad 13 это группа энтузиастов развивающая кастом культуру в России. Gad 13 начал своё существование с 2004 года и основное направление было постройка street fighter , а с 2008 года начало развиваться кастом строительство. Регулярный участник Imis и международного кубка по кастомайзенгу.
+     </p>
+  </div>
+  <button type="button" name="button" class="secondBlock__button" onclick="window.location.href = './aboutUs.html';">Подробнее</button>
+</div>
+
+<a id="services"></a>
+<div class="thirdBlock">
+  <p class="thirdBlock__title">Наши услуги</p>
+  <div class="row">
+    <div class="col-4 tuning">
+      <div>
+        <img src="{% static 'img/tuning.png' %}" alt="">
+        <p class="title">Тюнинг и кастомайзинг</p>
+        <p>Тюнинг мото, постройка кастомов "с нуля"</p>
+      </div>
+    </div>
+    <div class="col-4 production">
+      <div>
+        <img src="{% static 'img/production.png' %}" alt="">
+        <p class="title">Изготовление деталей</p>
+        <p>Крылья, баки, рамы и другие детали за заказ</p>
+      </div>
+    </div>
+    <div class="col-4 harley">
+      <div>
+        <img src="{% static 'img/harley-davidson-logo.png' %}" alt="">
+        <p class="title">Ремонт Harley Davidson</p>
+        <p>Ремонт мотоциклов Harley Davidson, заказ запчастей</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="fourthBlock">
+  <p class="thirdBlock__title">Наши работы</p>
+  <div class="fourthBlock__examples" style="width: 100%;">
+  {% for work in works %}
+
+    <div class="fourthBlock__examples_exampleOne" style="background-image: url({{ work.first_image.image.url }});" onclick="window.location.href = '/work/{{ work.id }}';">
+      <p>{{ work.title }}</p>
+    </div>
+  {% endfor %}
+    {% comment %} <div class="fourthBlock__examples_exampleTwo" style="background-image: url({% static 'img/example2.jpg' %});">
+      <p>Рама для пит-байка</p>
+    </div>
+    <div class="fourthBlock__examples_exampleThree" style="background-image: url({% static 'img/example3.jpg' %});">
+      <p>Расширительный бачок</p>
+    </div>{% endcomment %}
+  </div>
+  <button type="button" name="button" class="secondBlock__button" onclick="window.location.href = 'portfolio/';">Ещё</button>
+</div>
+</main>
+
+{% endblock %}

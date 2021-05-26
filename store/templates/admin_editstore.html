@@ -1,0 +1,166 @@
+{% extends 'base_store.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<main>
+  <div class="profile">
+    <div class="profile__title">
+      <!-- <p>Профиль пользователя</p> -->
+    </div>
+    <div class="profile__inputs">
+      <div class="profile__inputs_avatar">
+        <img src="./img/good_box.svg" alt="">
+      </div>
+      <div class="profile__inputs_field">
+
+        <div class="admin_buttons">
+          <button type="button" name="button" data-toggle="modal" data-target="#exampleModal1">Добавить товар</button>
+          <button type="button" name="button" onclick="window.location.href = '/store/edit/';">Редактировать товар</button>
+          <button type="button" name="button" onclick="window.location.href = '/store/table/';">Таблица товаров</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Modal add -->
+<form action="/store/admin/" method="post"  enctype="multipart/form-data">
+{% csrf_token %}
+  <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Добавление товара</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="example-1">
+            <div class="form-group">
+              <label class="label">
+                <i class="material-icons"><img src="./img/paper_clip.svg" width="50" alt="" style="margin-left: auto; margin-right: auto;"></i>
+                <span class="title">Добавить файл</span>
+                <input type="file" name="image" accept="image/*" id="id_image">
+              </label>
+            </div>
+            <div class="form-group" style="margin-top: -30px;">
+              <label for="exampleFormControlTextarea1">Название</label>
+              <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Название">
+            </div>
+            <div class="form-group" style="margin-top: -30px;">
+              <label for="exampleFormControlTextarea1">Описание</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3"></textarea>
+            </div>
+            <div class="form-group" style="margin-top: -30px;">
+              <label for="exampleFormControlInput1">Стоимость</label>
+              <input type="number" name="price" class="form-control" id="exampleFormControlInput1" placeholder="Стоимость">
+            </div>
+            <div class="form-group" style="margin-top: -30px;">
+              <label for="exampleFormControlInput1">В наличии</label>
+              <input type="number" name="amount" class="form-control" id="exampleFormControlInput1" placeholder="Остаток товара">
+            </div>
+            <div class="form-group" style="margin-top: -30px;">
+              <label for="exampleFormControlInput1">Категория</label>
+              {{ form.category }}
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn enterButton">Сохранить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- Modal search -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Редактирование товара</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Введите наименование товара</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Наименование">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn enterButton" data-toggle="modal" data-target="#exampleModalLong">Поиск</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal edit -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="width: 105%; margin-left: -10px;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Редактирование товара</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Фотографии</label>
+          <div class="row">
+            <div class="col-4" style="text-align:center">
+              <img src="./img/example2.jpg" alt="" width="100%">
+              <button type="button" class="btn mini_delButton">Удалить фотографию</button>
+            </div>
+            <div class="col-4" style="text-align:center">
+              <img src="./img/example2.jpg" alt="" width="100%">
+              <button type="button" class="btn mini_delButton">Удалить фотографию</button>
+            </div>
+            <div class="col-4" style="text-align:center">
+              <img src="./img/example2.jpg" alt="" width="100%">
+              <button type="button" class="btn mini_delButton">Удалить фотографию</button>
+            </div>
+          </div>
+        </div>
+        <div class="example-1">
+          <div class="form-group">
+            <label class="label">
+              <i class="material-icons"><img src="./img/paper_clip.svg" width="50" alt="" style="margin-left: auto; margin-right: auto;"></i>
+              <span class="title">Добавить файл</span>
+              <input type="file">
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Наименование</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Стоимость" value="Колеса">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Описание</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="8">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt earum expedita quae assumenda delectus, dignissimos repudiandae amet excepturi accusantium necessitatibus labore impedit fuga inventore iure obcaecati aperiam vitae harum ipsam.
+          </textarea>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Стоимость</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Стоимость" value="2342">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn delButton" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal4">Удалить товар</button>
+        <button type="button" class="btn enterButton" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal5">Сохранить изменения</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+$('#myModal').on('shown.bs.modal', function () {
+$('#myInput').trigger('focus')
+})
+</script>
+{% endblock %}

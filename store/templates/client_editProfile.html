@@ -1,0 +1,57 @@
+{% extends 'base_store.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+<main>
+
+<form action="/store/profile/" method="post">{% csrf_token %}
+
+  <div class="profile">
+    <div class="profile__title">
+      <!-- <p>Профиль пользователя</p> -->
+    </div>
+    <div class="profile__inputs">
+      <div class="profile__inputs_avatar">
+        <img src="{% static 'img/human_icon.svg' %}" alt="">
+      </div>
+      <div class="profile__inputs_field">
+        <div class='field'>
+          <input type='text' name='first_name' id='passport_fiz' value='{{ profile.first_name }}'>
+          <label for='passport_fiz' class="show">Имя</label>
+        </div>
+        <div class='field'>
+          <input type='text' name='last_name' id='passport_fiz' value='{{ profile.last_name }}'>
+          <label for='passport_fiz' class="show">Фамилия</label>
+        </div>
+        <div class='field'>
+          <input type='text' name='email' id='passport_fiz' value='{{ profile.email }}'>
+          <label for='passport_fiz' class="show">E-mail</label>
+        </div>
+        <div class='field'>
+          <input type='text' name='phone' id='passport_fiz' value='{{ profile.profile.phone }}'>
+          <label for='passport_fiz' class="show">Номер телефона</label>
+        </div>
+        {% if error %}
+        <div>{{ error }}</div>
+        {% endif %}
+        <div class='field'>
+          <input type='text' name='old_password' id='passport_fiz' value=''>
+          <label for='passport_fiz' class="show">Старый пароль</label>
+        </div>
+        <div class='field'>
+          <input type='text' name='new_password' id='passport_fiz' value=''>
+          <label for='passport_fiz' class="show">Пароль</label>
+        </div>
+        <div class="profile_save_edit">
+          <button type="submit">Сохранить изменения</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+</main>
+
+{% endblock %}

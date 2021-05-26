@@ -1,0 +1,573 @@
+{% extends 'base_store.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+<main>
+  <div class="categories">
+  {% for category in categories %}
+    <form action="/store/edit/" method="post">
+      {% csrf_token %}
+      <button type="submit" name="category" value="{{ category.id }}" class="categories_one" onclick="CategoriesActive(this)">{{ category.name }}</button>
+    </form>
+    <p></p>
+  {% endfor %}
+    {% comment %} <p class="categories_one" onclick="CategoriesActive(this)">Категория 2</p>
+    <p>/</p>
+    <p class="categories_one" onclick="CategoriesActive(this)">Категория 3</p>
+    <p>/</p>
+    <p class="categories_one" onclick="CategoriesActive(this)">Категория 4</p>
+    <p>/</p>
+    <p class="categories_one" onclick="CategoriesActive(this)">Категория 5</p>
+    <p>/</p>
+    <p class="categories_one" onclick="CategoriesActive(this)">Категория 6</p> {% endcomment %}
+
+    <div class="sort">
+    <form action="/store/edit/" method="post">
+        {% csrf_token %}
+      <button type="submit" name="cost" value="cost" class="categories_one" onclick="CategoriesActive(this)">Цене</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="goods">
+    <div class="row">
+
+
+      {% for product in products %}
+        <div class="col-3 one__good">
+          <div class="one__good_content">
+              <a href="#rama1" class="one__good_img">
+                <img src="{{ product.first_image.image.url }}" width="80%" style="margin-left: auto; margin-right: auto;">
+              </a>
+              <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+              <p class="title">{{ product.title }}</p>
+              <div class="one__good_content_description">
+                <p>{{ product.description }}
+                </p>
+              </div>
+              <div>
+                <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">{{ product.price }}₽</p>
+                <button type="button" class="btn button_buy" onclick="window.location.href = '/store/product/{{ product.id }}';">
+                  Редактировать
+                </button>
+              </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</main>
+
+{% comment %} 
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalLong">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalLong">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="col-3 one__good">
+        <div class="one__good_content">
+            <a href="#rama1" class="one__good_img">
+              <img src="./img/1.PNG" width="80%" style="margin-left: auto; margin-right: auto;">
+            </a>
+            <a id="rama1" href="#" class="full" style="background-image:url(./img/1.PNG)"></a>
+            <p class="title">Название</p>
+            <div class="one__good_content_description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nostrum hic iste, in ducimus officiis. Perferendis temporibus alias, praesentium molestiae eos explicabo nemo nihil ipsum blanditiis delectus cupiditate animi ratione?
+              </p>
+            </div>
+            <div>
+              <p style="color: black; margin-top:15px; margin-right:15px; font-weight: 500;">1244₽</p>
+              <button type="button" class="btn button_buy" data-toggle="modal" data-target="#exampleModalGood">
+                Редактировать
+              </button>
+            </div>
+        </div>
+      </div> {% endcomment %}
+
+
+<!-- Modal edit -->
+{% comment %} <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="width: 105%; margin-left: -10px;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Редактирование товара</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Фотографии</label>
+          <div class="row">
+            <div class="col-4" style="text-align:center">
+              <img src="./img/example2.jpg" alt="" width="100%">
+              <button type="button" class="btn mini_delButton">Удалить фотографию</button>
+            </div>
+            <div class="col-4" style="text-align:center">
+              <img src="./img/example2.jpg" alt="" width="100%">
+              <button type="button" class="btn mini_delButton">Удалить фотографию</button>
+            </div>
+            <div class="col-4" style="text-align:center">
+              <img src="./img/example2.jpg" alt="" width="100%">
+              <button type="button" class="btn mini_delButton">Удалить фотографию</button>
+            </div>
+          </div>
+        </div>
+        <div class="example-1">
+          <div class="form-group">
+            <label class="label">
+              <i class="material-icons"><img src="./img/paper_clip.svg" width="50" alt="" style="margin-left: auto; margin-right: auto;"></i>
+              <span class="title">Добавить файл</span>
+              <input type="file">
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Наименование</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Стоимость" value="Колеса">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Описание</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="8">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt earum expedita quae assumenda delectus, dignissimos repudiandae amet excepturi accusantium necessitatibus labore impedit fuga inventore iure obcaecati aperiam vitae harum ipsam.
+          </textarea>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Стоимость</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Стоимость" value="2342">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn delButton" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal4">Удалить товар</button>
+        <button type="button" class="btn enterButton" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal5">Сохранить изменения</button>
+      </div>
+    </div>
+  </div>
+</div> {% endcomment %}
+<script src="{% static 'js/store.js' %}"></script>
+<script>
+$('#myModal').on('shown.bs.modal', function () {
+$('#myInput').trigger('focus')
+})
+</script>
+{% endblock %}

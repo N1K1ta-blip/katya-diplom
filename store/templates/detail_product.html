@@ -1,0 +1,81 @@
+{% extends 'base_store.html' %}
+
+{% block content %}
+
+{{ images_form.as_p }}
+<main>
+
+  <div class="profile">
+    <div class="profile__title">
+      <!-- <p>Профиль пользователя</p> -->
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-lg-12"><br><br>
+            {% comment %} <h6 class="text-muted">List Group with Images</h6>  {% endcomment %}
+            <ul class="list-group list-group-horizontal">
+            {% for image in images_form %}
+
+                <li class="list-group-item justify-content-between align-items-center">
+                    <div class="image-parent">
+                        <img src="{{ image }}" width="500" height="600" class="img-fluid" alt="quixote">
+                    </div>
+                    <form action="?" method="post" enctype="multipart/form-data">{% csrf_token %}
+                    <button type="submit" name="delete" value="{{ image.id }}" class="delite_button">Удалить избражение</button>
+                    </form>
+                </li>
+
+            {% endfor %}
+            </ul>
+            </div>
+        </div><br>
+        <form action="?" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <input type="file" name="image" accept="image/*" id="id_image">
+    </div>
+
+
+    <div class="profile__inputs">
+        {% comment %} {% for image,url in images_form.items %}
+            <div class="profile__inputs_avatar">
+                <img src="{{ url }}" alt="">
+            </div>
+        {% endfor %} {% endcomment %}
+        <div class="profile__inputs_field">
+        <div class='field'>
+            {{ product_form.title }}
+            <label for='passport_fiz' class="show">Название</label>
+        </div>
+        <div class='field'>
+            {{ product_form.description }}
+            <label for='passport_fiz' class="show">Описание</label>
+        </div>
+        <div class='field'>
+            {{ product_form.price }}
+            <label for='passport_fiz' class="show">Цена продукта</label>
+        </div>
+        <div class='field'>
+            {{ product_form.amount }}
+            <label for='passport_fiz' class="show">Остаток а наличии</label>
+        </div>
+        <div class='field'>
+            <div class="show">Категория</div>
+            {{ product_form.category }}
+        </div>
+        {% comment %} <div class='field'>
+          <input type='text' name='passport' id='passport_fiz' value=''>
+          <label for='passport_fiz' class="show">Пароль</label>
+        </div> {% endcomment %}
+        <div class="profile_save_edit">
+          <button type="submit" name="button">Сохранить изменения</button>
+        </div>
+        <div class="profile_save_edit" style="margin-top: 15px;">
+          <button type="submit" name="delete_product" value="{{ product.id }}">Удалить товар</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+</main>
+
+{% endblock %}
