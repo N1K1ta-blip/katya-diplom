@@ -4,78 +4,82 @@
 
 {% load static %}
 
+
 <main>
   <div class="profile">
-    <div class="profile__title">
-      <!-- <p>Профиль пользователя</p> -->
-    </div>
-    <div class="profile__inputs">
-      <div class="profile__inputs_avatar">
-        <img src="./img/good_box.svg" alt="">
-      </div>
-      <div class="profile__inputs_field">
+    <table class="table"> <!--создание таблицы-->
+        <thead>
+        <tr> <!--создание строки-->
+            <th>Имя покупателя</th> <!--создание ячейки th-заголовочная ячейка-->
+            <th>Список покупок</th>
+            <th>Тип доставки</th>
+            <th>Способ оплаты</th>
+            <th>Тип оплаты</th>
+            <th>Адрес</th>
+            <th>Сдача с:</th>
+        </tr>
+        </thead>
 
-        <div class="admin_buttons">
-          <button type="button" name="button" data-toggle="modal" data-target="#exampleModal1">Добавить товар</button>
-          <button type="button" name="button" onclick="window.location.href = '/store/edit/';">Редактировать товар</button>
-          <button type="button" name="button" onclick="window.location.href = '/store/table/';">Таблица товаров</button>
-          <button type="button" name="button" onclick="window.location.href = '/store/history/';">Таблица товаров</button>
-        </div>
-      </div>
-    </div>
+        <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.user.username }}</td>
+            <td>{% for product in order.products.all %} {{ forloop.counter }}: {{ product.title}}<br><br> {% endfor %}</td>
+            <td>{{ order.get_delivery_type_display }}</td>
+            <td>{{ order.get_payment_place_display }}</td>
+            <td>{{ order.get_payment_type_display }}</td>
+            <td>{{ order.get_full_address }}</td>
+            <td>{{ order.lease }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
   </div>
 </main>
 
+<footer>
+  <p>+7 (###) ###-##-##</p>
+  <div>
+    <img src="./img/instagram.svg" class="instargam" alt="">
+  </div>
+</footer>
+
+
 <!-- Modal add -->
-<form action="/store/admin/" method="post"  enctype="multipart/form-data">
-{% csrf_token %}
-  <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Добавление товара</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="example-1">
-            <div class="form-group">
-              <label class="label">
-                <i class="material-icons"><img src="./img/paper_clip.svg" width="50" alt="" style="margin-left: auto; margin-right: auto;"></i>
-                <span class="title">Добавить файл</span>
-                <input type="file" name="image" accept="image/*" id="id_image">
-              </label>
-            </div>
-            <div class="form-group" style="margin-top: -30px;">
-              <label for="exampleFormControlTextarea1">Название</label>
-              <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Название">
-            </div>
-            <div class="form-group" style="margin-top: -30px;">
-              <label for="exampleFormControlTextarea1">Описание</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3"></textarea>
-            </div>
-            <div class="form-group" style="margin-top: -30px;">
-              <label for="exampleFormControlInput1">Стоимость</label>
-              <input type="number" name="price" class="form-control" id="exampleFormControlInput1" placeholder="Стоимость">
-            </div>
-            <div class="form-group" style="margin-top: -30px;">
-              <label for="exampleFormControlInput1">В наличии</label>
-              <input type="number" name="amount" class="form-control" id="exampleFormControlInput1" placeholder="Остаток товара">
-            </div>
-            <div class="form-group" style="margin-top: -30px;">
-              <label for="exampleFormControlInput1">Категория</label>
-              {{ form.category }}
-            </div>
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Добавление товара</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="example-1">
+          <div class="form-group">
+            <label class="label">
+              <i class="material-icons"><img src="./img/paper_clip.svg" width="50" alt="" style="margin-left: auto; margin-right: auto;"></i>
+              <span class="title">Добавить файл</span>
+              <input type="file">
+            </label>
+          </div>
+          <div class="form-group" style="margin-top: -30px;">
+            <label for="exampleFormControlTextarea1">Описание</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <div class="form-group" style="margin-top: -30px;">
+            <label for="exampleFormControlInput1">Стоимость</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Стоимость">
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn enterButton">Сохранить</button>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn enterButton">Сохранить</button>
       </div>
     </div>
   </div>
-</form>
+</div>
 
 <!-- Modal search -->
 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

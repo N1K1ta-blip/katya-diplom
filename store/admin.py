@@ -1,7 +1,7 @@
 from django.contrib import admin
 from guardian.admin import GuardedModelAdmin
 
-from store.models import Product, Image, Category
+from store.models import Product, Image, Category, Order
 
 class ImageInlineAdmin(admin.StackedInline):
     model = Image
@@ -14,4 +14,9 @@ class ProductAdmin(GuardedModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(GuardedModelAdmin):
+    pass
+
+
+@admin.register(Order)
+class OrderAdmin(GuardedModelAdmin):
     pass

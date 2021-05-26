@@ -72,6 +72,8 @@
   </div>
 </div>
 <!-- Modal login-->
+<form action="/store/cart/" method="post">
+        {% csrf_token %}
 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -94,42 +96,41 @@
           </div>
           <div class="col-12">
             <p style="font-size: 20px; font-weight: 500">Способ доставки:</p>
-            <p style="font-size: 18px"><input name="deliver" type="radio" onclick="document.getElementsByClassName('delivery_input')[0].style.display = 'none'"> Самовывоз</p>
-            <p style="font-size: 18px"><input name="deliver" type="radio" onclick="document.getElementsByClassName('delivery_input')[0].style.display = 'block'"> Доставка</p>
+            <p style="font-size: 18px"><input name="delivery_type" value="SEL" type="radio" onclick="document.getElementsByClassName('delivery_input')[0].style.display = 'none'"> Самовывоз</p>
+            <p style="font-size: 18px"><input name="delivery_type" value="DEL" type="radio" onclick="document.getElementsByClassName('delivery_input')[0].style.display = 'block'"> Доставка</p>
           </div>
           <div class="delivery_input" style="width: 100%; margin-top: 15px; display: none">
             <div class="col-12 enterPopup_input">
-              <input type="text" name="" value="" placeholder="Город">
+              <input type="text" name="city" value="" placeholder="Город">
             </div>
             <div class="col-12 enterPopup_input">
-              <input type="text" name="" value="" placeholder="Улица">
+              <input type="text" name="street" value="" placeholder="Улица">
             </div>
             <div class="col-12 enterPopup_input">
-              <input type="text" name="" value="" placeholder="Дом">
+              <input type="text" name="house" value="" placeholder="Дом">
             </div>
             <div class="col-12 enterPopup_input">
-              <input type="text" name="" value="" placeholder="Корпус">
+              <input type="text" name="corps" value="" placeholder="Корпус">
             </div>
             <div class="col-12 enterPopup_input">
-              <input type="text" name="" value="" placeholder="Квартира">
+              <input type="text" name="apartment" value="" placeholder="Квартира">
             </div>
           </div>
           <div class="col-12">
             <p style="font-size: 20px; font-weight: 500">Способ оплаты:</p>
-            <p style="font-size: 18px"><input name="cash" type="radio" value="nedzen" onclick="document.getElementsByClassName('delivery_input')[1].style.display = 'none'"> Онлайн</p>
-            <p style="font-size: 18px"><input name="cash" type="radio" value="dzen" onclick="document.getElementsByClassName('delivery_input')[1].style.display = 'block'"> При получении</p>
+            <p style="font-size: 18px"><input name="payment_place" type="radio" value="ONL" onclick="document.getElementsByClassName('delivery_input')[1].style.display = 'none'"> Онлайн</p>
+            <p style="font-size: 18px"><input name="payment_place" type="radio" value="OFL" onclick="document.getElementsByClassName('delivery_input')[1].style.display = 'block'"> При получении</p>
             <div class="delivery_input" style="width: 100%; margin-top: 15px; display: none">
-              <p style="font-size: 18px"><input name="way" type="radio" value="nedzen" onclick="document.getElementsByClassName('delivery_input')[2].style.display = 'none'"> Картой</p>
-              <p style="font-size: 18px"><input name="way" type="radio" value="dzen" onclick="document.getElementsByClassName('delivery_input')[2].style.display = 'block'"> Наличкой</p>
+              <p style="font-size: 18px"><input name="payment_type" type="radio" value="CAR" onclick="document.getElementsByClassName('delivery_input')[2].style.display = 'none'"> Картой</p>
+              <p style="font-size: 18px"><input name="payment_type" type="radio" value="CAS" onclick="document.getElementsByClassName('delivery_input')[2].style.display = 'block'"> Наличкой</p>
               <div class="delivery_input" style="width: 100%; margin-top: 15px; display: none">
-                <p style="font-size: 18px">Сдача с:<input name="way" type="text" value=""></p>
+                <p style="font-size: 18px">Сдача с:<input name="lease" type="number" value="0"></p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <form action="/store/cart/" method="post">
-        {% csrf_token %}
+      
         <div class="modal-footer">
             <button type="submit" name="order" value="1" class="btn" style="background: orange; color: white;" id="delivar_button">Заказать</button>
         </div>

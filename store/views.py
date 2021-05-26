@@ -8,7 +8,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.hashers import check_password
 
 from cart.cart import Cart
-from store.models import Product, Category, Image
+from store.models import Order, Product, Category, Image
 from store.forms import ProductForm, ImageForm
 
 User = get_user_model()
@@ -178,6 +178,30 @@ class CartView(View):
 
     def post(self, request, *args, **kwargs):
         cart = Cart(request)
+        data = request.POST
+
+        products = []
+        for item in cart:
+            products.append(item.product)
+        print(products)
+        print(data)
+        order = Order.objects.create(
+            user=request.user,
+            # products = products.set(products),
+            delivery_type=data.get('delivery_type'),
+            payment_place=data.get('payment_place'),
+            payment_type=data.get('payment_type'),
+
+            city=data.get('city'),
+            street=data.get('street'),
+            house=data.get('house'),
+            corps=data.get('corps'),
+            apartment=data.get('apartment'),
+            lease=data.get('lease')
+        )
+        order.products.set(products)
+        order.save()
+
         for item in cart:
             product = item.product
             product.selled += item.quantity
@@ -273,4 +297,45 @@ class ProfileView(View):
                 user.save()
             else:
                 context['error'] = "Неправильный пароль"
+        return render(request, self.template_name, context)
+
+
+# HistoryDetailView
+# HistoryView
+
+class HistoryDetailView(View):
+    template_name = 'history_self.html'
+
+    def get_context(self, request):
+        context = {}
+        # user = request.user
+        orders = Order.objects.filter(user=request.user)
+        context['orders'] = orders
+        # context['profile'] = user
+        return context
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context(request)
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        context = self.get_context(request)
+        return render(request, self.template_name, context)
+
+
+class HistoryView(View):
+    template_name = 'history.html'
+
+    def get_context(self, request):
+        context = {}
+        orders = Order.objects.all()
+        context['orders'] = orders
+        return context
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context(request)
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        context = self.get_context(request)
         return render(request, self.template_name, context)
