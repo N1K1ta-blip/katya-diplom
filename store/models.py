@@ -4,15 +4,15 @@ import time
 
 def generate_imageset_upload_to(instance, filename=None):
     return f'images/{instance.id}_{str(int(time.time()))}.png'
-    
+
 class Category(models.Model):
     name = models.CharField(max_length=255)
 
     class Meta:
         verbose_name = "Категория"
-        verbose_name_plural = "Категории"   
+        verbose_name_plural = "Категории"
 
-    def __str__(self):                           
+    def __str__(self):
         return self.name
 
 
@@ -23,7 +23,7 @@ class Product(models.Model):
     amount = models.PositiveIntegerField(verbose_name="Остаток а наличии")
     selled = models.IntegerField(default=0 ,verbose_name="Продано товаров")
 
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True) 
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -32,7 +32,7 @@ class Product(models.Model):
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
 
-    def __str__(self):
+    def __str__(self): 
         return self.title
 
     def first_image(self):
@@ -114,9 +114,9 @@ class Order(models.Model):
 
     class Meta:
         verbose_name = "Заказ"
-        verbose_name_plural = "Заказы"   
+        verbose_name_plural = "Заказы"
 
-    def __str__(self):                           
+    def __str__(self):
         return str(self.created_at)
 
     def get_full_address(self):

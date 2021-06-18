@@ -106,7 +106,7 @@ class AdminView(View):
             description = data.get("description"),
             price       = data.get("price"),
             amount      = data.get("amount"),
-            category    = category,
+            category    = category, 
         )
 
         if request.FILES.get('image'):
